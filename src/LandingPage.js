@@ -1,0 +1,57 @@
+import { useEffect, useState } from "react"
+import { useCoinList } from "./Context"
+import { debounce, getItemNumber } from "./utils"
+
+export default function LandingPage() {
+  const [itemNumber, setItemNumber] = useState(getItemNumber())
+  useEffect(() => {
+    let listener = () => setItemNumber(getItemNumber())
+    listener = debounce(listener, 100)
+    window.addEventListener("resize", listener)
+    return () => window.removeEventListener("resize", listener)
+  }, [])
+
+  const coinList = useCoinList()
+  const carouselGroups = coinList.reduce((prev, curr) => {
+    const lastGroup = prev[prev.length - 1]
+    if (lastGroup.length <= itemNumber) {
+      lastGroup.push(curr)
+    }
+    else {
+      prev.push([curr])
+    }
+    return prev
+  }, [[]])
+  const carouselItems = carouselGroups.map((group, idx) => {
+    return (
+      <div key={group.map(item => item.id).join('-')} className={(idx === 0) ? "carousel-item active" : "carousel-item"} data-bs-interval="5000">
+        <div className="coin-group">
+          {group.map(({ id, image }) => <img key={id} src={image} className="d-block" alt="coin" />)}
+        </div>
+      </div>
+    )
+  })
+
+  return (
+    <>
+      <div className="trending container-xxl text-center fs-4 fw-bold mt-5 mb-4">
+        Trending
+      </div>
+      <div className="container-xxl">
+        <div id="carouselExampleControls" key={itemNumber} className="carousel carousel-dark slide" data-bs-ride="carousel">
+          <div className="carousel-inner">
+            {carouselItems}
+          </div>
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </>
+  )
+}
