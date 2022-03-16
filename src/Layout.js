@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useCoin } from "./Context";
 
@@ -54,10 +55,7 @@ export default function Layout({ children }) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link" >Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/coins/1" className="nav-link" >Coins</Link>
+                <NavLink className="nav-link" activeClassName='active' to='/' exact>Home</NavLink>
               </li>
             </ul>
             <form className="d-flex">

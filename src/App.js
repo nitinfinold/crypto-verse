@@ -43,7 +43,7 @@ function App() {
   }, [])
   return (
     <CoinContext.Provider value={{ list: coinList, news: coinNews }}>
-      <BrowserRouter>
+      <BrowserRouter basename="/crypto-verse">
         <Layout >
           <Switch>
             <Route path="/coins/:id" component={CoinPage} exact />
