@@ -10,14 +10,39 @@ import CoinContext from './Context';
 function App() {
   const [coinList, setCoinList] = useState([]);
   useEffect(() => {
-    (async () =>{
-      const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false`)
-      const json = await res.json()
+    (async () => {
+      let res
+      let json
+      try {
+        res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false`)
+        json = await res.json()
+      }
+      catch {
+        res = await fetch(`/list-fallback.json`)
+        json = await res.json()
+      }
       setCoinList(json);
     })()
   }, [])
+
+  const [coinNews, setCoinNews] = useState([]);
+  useEffect(() => {
+    (async () => {
+      let res
+      let json
+      try {
+        res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_55013c491e07acd3c5766ae3afc3603800d5&q=crypto&language=en&domain=cision`)
+        json = await res.json()
+      }
+      catch {
+        res = await fetch(`/news-fallback.json`)
+        json = await res.json()
+      }
+      setCoinNews(json.results);
+    })()
+  }, [])
   return (
-    <CoinContext.Provider value={coinList}>
+    <CoinContext.Provider value={{ list: coinList, news: coinNews }}>
       <BrowserRouter>
         <Layout >
           <Switch>

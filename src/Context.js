@@ -4,6 +4,6 @@ const CoinContext = createContext();
 
 export default CoinContext;
 
-export const useCoinList = () => {
+export const useCoin = () => {
   return useContext(CoinContext);
 };

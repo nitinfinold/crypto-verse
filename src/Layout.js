@@ -1,21 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useCoinList } from "./Context";
+import { useCoin } from "./Context";
 
 export default function Layout({ children }) {
   const [search, setSearch] = useState('')
-  const coinList = useCoinList()
-  console.log({ coinList })
+  useEffect(() => {
+    document.body.style.overflowY = search ? 'hidden' : ''
+  }, [search])
+  const coinList = useCoin().list
   const searchResult = (
     search && (
       <div className="search-result">
         <div className="container-xxl">
-          <p class="fs-1 pt-5 pb-2">Search Result</p>
-          <table class="table">
+          <p className="fs-1 pt-5 pb-2">Search Result</p>
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Coin</th>
+                <th scope="col" style={{ paddingLeft: '1.5rem' }}>Coin</th>
                 <th scope="col">Price</th>
                 <th scope="col">Market Cap</th>
               </tr>
@@ -23,9 +25,13 @@ export default function Layout({ children }) {
             <tbody>
               {
                 coinList.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase())).map((coin, idx) => (
-                  <tr>
+                  <tr key={coin.name}>
                     <th scope="row">{idx}</th>
-                    <td>{coin.name}</td>
+                    <td>
+                      <Link to={`/coins/${coin.id}`} className="nav-link" onClick={() => setSearch('')}>
+                        {coin.name}
+                      </Link>
+                    </td>
                     <td>{coin.current_price}</td>
                     <td>{coin.market_cap}</td>
                   </tr>

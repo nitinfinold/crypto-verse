@@ -1,4 +1,4 @@
-.search-result{
+.search-result {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -8,6 +8,10 @@
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  tr{
+    vertical-align: middle;
   }
 }
 
@@ -28,7 +32,21 @@
       object-position: center;
     }
 
-    @media (max-width: 575px) {
+    @media (max-width: 575px) {}
+  }
+}
+
+.news {
+  background-color: #fafafa;
+
+  .card {
+    margin: 1rem 1rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 }
