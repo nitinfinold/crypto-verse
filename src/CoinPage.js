@@ -37,7 +37,7 @@ export default function CoinPage() {
     </div>
 
     <div className="col">
-      <p className="text-center fs-5 pt-1 pb-4 ps-5 pe-5">{coin?.description.en.substring(0, 400)}</p>
+      <p className="text-center fs-5 pt-1 pb-4 ps-5 pe-5" dangerouslySetInnerHTML={{__html:coin?.description.en.substring(0, 400)}}></p>
     </div>
 
     <div className="container">
