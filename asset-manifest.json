@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.3fb550e6.css",
-    "main.js": "/static/js/main.b5a2dc5f.js",
-    "static/js/787.19d8e038.chunk.js": "/static/js/787.19d8e038.chunk.js",
-    "index.html": "/index.html",
-    "main.3fb550e6.css.map": "/static/css/main.3fb550e6.css.map",
-    "main.b5a2dc5f.js.map": "/static/js/main.b5a2dc5f.js.map",
-    "787.19d8e038.chunk.js.map": "/static/js/787.19d8e038.chunk.js.map"
+    "main.css": "/crypto-verse/static/css/main.3fb550e6.css",
+    "main.js": "/crypto-verse/static/js/main.63e9ec17.js",
+    "static/js/787.19d8e038.chunk.js": "/crypto-verse/static/js/787.19d8e038.chunk.js",
+    "index.html": "/crypto-verse/index.html",
+    "main.3fb550e6.css.map": "/crypto-verse/static/css/main.3fb550e6.css.map",
+    "main.63e9ec17.js.map": "/crypto-verse/static/js/main.63e9ec17.js.map",
+    "787.19d8e038.chunk.js.map": "/crypto-verse/static/js/787.19d8e038.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3fb550e6.css",
-    "static/js/main.b5a2dc5f.js"
+    "static/js/main.63e9ec17.js"
   ]
 }
