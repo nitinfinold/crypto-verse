@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import AuthModal from "./AuthModal";
 import { useCoin } from "./Context";
 
 export default function Layout({ children }) {
@@ -63,6 +64,7 @@ export default function Layout({ children }) {
                 value={search} onChange={e => setSearch(e.target.value)} />
             </form>
           </div>
+          <AuthModal />
         </div>
       </nav>
       {searchResult}
