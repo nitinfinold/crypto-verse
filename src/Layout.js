@@ -3,48 +3,14 @@ import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
 import { useCoin } from "./Context";
+import { CoinList } from "./CoinList";
+
 
 export default function Layout({ children }) {
   const [search, setSearch] = useState('')
   useEffect(() => {
     document.body.style.overflowY = search ? 'hidden' : ''
   }, [search])
-  const coinList = useCoin().list
-  const searchResult = (
-    search && (
-      <div className="search-result">
-        <div className="container-xxl">
-          <p className="fs-1 pt-5 pb-2">Search Result</p>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col" style={{ paddingLeft: '1.5rem' }}>Coin</th>
-                <th scope="col">Price</th>
-                <th scope="col">Market Cap</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                coinList.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase())).map((coin, idx) => (
-                  <tr key={coin.name}>
-                    <th scope="row">{idx}</th>
-                    <td>
-                      <Link to={`/coins/${coin.id}`} className="nav-link" onClick={() => setSearch('')}>
-                        {coin.name}
-                      </Link>
-                    </td>
-                    <td>{coin.current_price}</td>
-                    <td>{coin.market_cap}</td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
-    )
-  )
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -58,6 +24,9 @@ export default function Layout({ children }) {
               <li className="nav-item">
                 <NavLink className="nav-link" activeClassName='active' to='/' exact>Home</NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" activeClassName='active' to='/coins' exact>All Coins</NavLink>
+              </li>
             </ul>
             <form className="d-flex">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
@@ -67,7 +36,9 @@ export default function Layout({ children }) {
           <AuthModal />
         </div>
       </nav>
-      {searchResult}
+      {search && (
+        <CoinList search={search} title="Search Result" zIndex={2} linkCallback={() => setSearch('')} />
+      )}
       {children}
     </>
   )
