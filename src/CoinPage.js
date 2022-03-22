@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ChartInfo from './ChartInfo';
+
 
 
 export default function CoinPage() {
@@ -20,9 +22,7 @@ export default function CoinPage() {
   useEffect(() => {
     fetchCoin();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  console.log(coin);
+  }, [id]);
 
   function numberWithCommas(x) {
     return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -37,14 +37,14 @@ export default function CoinPage() {
     </div>
 
     <div className="col">
-      <p className="text-center fs-5 pt-1 pb-4 ps-5 pe-5" dangerouslySetInnerHTML={{__html:coin?.description.en.substring(0, 400)}}></p>
+      <p className="text-center fs-5 pt-1 pb-4 ps-5 pe-5" dangerouslySetInnerHTML={{ __html: coin?.description.en.substring(0, 400) }}></p>
     </div>
 
     <div className="container">
       <div className="row">
 
-        <div className="col">
-        <p className=" fs-5 pt-4 pb-1 "><strong>Symbol :</strong>&nbsp;&nbsp;&nbsp;<img src={coin?.image.small} className="img-fluid rounded-start " alt="Coin_image"/></p>
+        <div className="col-12 col-md-4">
+          <p className=" fs-5 pt-4 pb-1 "><strong>Symbol :</strong>&nbsp;&nbsp;&nbsp;<img src={coin?.image.small} className="img-fluid rounded-start " alt="Coin_image" /></p>
           <p className=" fs-5 pt-1 pb-1 "><strong>Current Price CAD$ :</strong> {numberWithCommas(coin?.market_data.current_price?.cad)}</p>
           <p className=" fs-5 pt-1 pb-1 "><strong>Market Cap Rank :</strong> {coin?.market_data.market_cap_rank}</p>
           <p className=" fs-5 pt-1 pb-1 "><strong>Market Capitalization :</strong> {numberWithCommas(coin?.market_data.market_cap?.cad)}</p>
@@ -54,8 +54,8 @@ export default function CoinPage() {
           <p className=" fs-5 pt-1 pb-1 "><strong>% Price Change 1 Month :</strong> {coin?.market_data.price_change_percentage_30d_in_currency?.cad}</p>
           <p className=" fs-5 pt-1 pb-1 "><strong>% Price Change 1 Year :</strong> {coin?.market_data.price_change_percentage_1y_in_currency?.cad}</p>
         </div>
-        <div className="col">
-        <p className="text-center fs-4 pt-1 pb-4 "></p>
+        <div className="col-12 col-md-8">
+          <ChartInfo coin={coin} />
         </div>
       </div>
     </div>
