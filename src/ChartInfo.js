@@ -4,9 +4,11 @@ import { Line } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
-export default ({ coin }) => {
+export default function ChartInfo({ coin }) {
   const [historicData, setHistoricData] = useState();
   const [day, setDay] = useState(1);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     const HistoricalChart = await fetch(`https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=cad&days=${day}`);
     const json = await HistoricalChart.json()

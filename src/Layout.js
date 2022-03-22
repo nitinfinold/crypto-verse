@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
-import { useCoin } from "./Context";
 import { CoinList } from "./CoinList";
 
 
