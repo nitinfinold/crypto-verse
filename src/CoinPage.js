@@ -43,6 +43,10 @@ export default function CoinPage() {
     <div className="container">
       <div className="row">
 
+        <div className="col-12 col-md-8">
+          <ChartInfo coin={coin} />
+        </div>
+
         <div className="col-12 col-md-4">
           <p className=" fs-5 pt-4 pb-1 "><strong>Symbol :</strong>&nbsp;&nbsp;&nbsp;<img src={coin?.image.small} className="img-fluid rounded-start " alt="Coin_image" /></p>
           <p className=" fs-5 pt-1 pb-1 "><strong>Current Price CAD$ :</strong> {numberWithCommas(coin?.market_data.current_price?.cad)}</p>
@@ -54,9 +58,7 @@ export default function CoinPage() {
           <p className=" fs-5 pt-1 pb-1 "><strong>% Price Change 1 Month :</strong> {coin?.market_data.price_change_percentage_30d_in_currency?.cad}</p>
           <p className=" fs-5 pt-1 pb-1 "><strong>% Price Change 1 Year :</strong> {coin?.market_data.price_change_percentage_1y_in_currency?.cad}</p>
         </div>
-        <div className="col-12 col-md-8">
-          <ChartInfo coin={coin} />
-        </div>
+
       </div>
     </div>
 

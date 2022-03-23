@@ -7,6 +7,7 @@ import CoinPage from './CoinPage';
 import { useEffect, useState } from 'react';
 import CoinContext from './Context';
 import CoinsPage from './CoinsPage';
+import Resources from './Resources';
 
 function App() {
   const [coinList, setCoinList] = useState([]);
@@ -49,6 +50,7 @@ function App() {
           <Switch>
             <Route path="/coins/:id" component={CoinPage} exact />
             <Route path="/coins" component={CoinsPage} exact />
+            <Route path="/resources" component={Resources} exact />
             <Route path="/" component={LandingPage} exact />
           </Switch>
         </Layout>

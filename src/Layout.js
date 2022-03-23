@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
-import { useCoin } from "./Context";
 import { CoinList } from "./CoinList";
 
 
@@ -26,6 +25,9 @@ export default function Layout({ children }) {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" activeClassName='active' to='/coins' exact>All Coins</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" activeClassName='active' to='/resources' exact>Resources</NavLink>
               </li>
             </ul>
             <form className="d-flex">

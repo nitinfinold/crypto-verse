@@ -30,7 +30,7 @@ export default ({ coin }) => {
             {
               data: historicData.map((coin) => coin[1]),
               label: `Price ( Past ${day} Days )`,
-              borderColor: "#EEBC1D",
+              borderColor: "#0D6EFD",
             },
           ],
         }}
