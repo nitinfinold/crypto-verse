@@ -1,17 +1,21 @@
 import { Box, Button, TextField } from "@material-ui/core";
 import { useState } from "react";
+import { useCoin } from "./Context";
 
 const Signup = ({ handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-//   const { setAlert } = CryptoState();
+  //   const { setAlert } = CryptoState();
 
   const handleSubmit = async () => {
 
-    }
+  }
 
+
+
+  const { setAlert } = useCoin()
 
 
   return (
@@ -55,6 +59,8 @@ const Signup = ({ handleClose }) => {
       >
         Sign Up
       </Button>
+
+      <button onClick={() => setAlert({ open: true })}>Show alert</button>
     </Box>
   );
 };

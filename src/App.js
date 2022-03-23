@@ -7,9 +7,15 @@ import CoinPage from './CoinPage';
 import { useEffect, useState } from 'react';
 import CoinContext from './Context';
 import CoinsPage from './CoinsPage';
+import { Alert } from './Alert';
 
 function App() {
   const [coinList, setCoinList] = useState([]);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: '',
+    type: 'success',
+  });
   useEffect(() => {
     (async () => {
       let res
@@ -43,7 +49,7 @@ function App() {
     })()
   }, [])
   return (
-    <CoinContext.Provider value={{ list: coinList, news: coinNews }}>
+    <CoinContext.Provider value={{ list: coinList, news: coinNews, alert, setAlert }}>
       <BrowserRouter basename="/crypto-verse">
         <Layout >
           <Switch>
@@ -51,6 +57,7 @@ function App() {
             <Route path="/coins" component={CoinsPage} exact />
             <Route path="/" component={LandingPage} exact />
           </Switch>
+          <Alert />
         </Layout>
       </BrowserRouter>
     </CoinContext.Provider>
