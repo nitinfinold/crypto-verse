@@ -28,8 +28,8 @@ export default function LandingPage() {
       <div key={group.map(item => item.id).join('-')} className={(idx === 0) ? "carousel-item active" : "carousel-item"} data-bs-interval="5000">
         <div className="coin-group">
           {group.map(({ id, image }) => (
-            <Link to={`/coins/${id}`} className="nav-link" >
-              <img key={id} src={image} className="d-block" alt="coin" />
+            <Link key={id} to={`/coins/${id}`} className="nav-link" >
+              <img src={image} className="d-block" alt="coin" />
             </Link>))}
         </div>
       </div>
