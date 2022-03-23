@@ -9,9 +9,20 @@ import CoinContext from './Context';
 import CoinsPage from './CoinsPage';
 import Resources from './Resources';
 import { Alert } from './Alert';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
 
 function App() {
   const [coinList, setCoinList] = useState([]);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) setUser(user);
+      else setUser(null);
+    });
+  }, []);
+
   const [alert, setAlert] = useState({
     open: false,
     message: '',
@@ -50,7 +61,7 @@ function App() {
     })()
   }, [])
   return (
-    <CoinContext.Provider value={{ list: coinList, news: coinNews, alert, setAlert }}>
+    <CoinContext.Provider value={{ list: coinList, news: coinNews, alert, setAlert,user }}>
       <BrowserRouter basename="/crypto-verse">
         <Layout >
           <Switch>

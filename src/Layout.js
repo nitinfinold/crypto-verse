@@ -3,9 +3,14 @@ import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
 import { CoinList } from "./CoinList";
+import { useCoin } from "./Context";
+import Sidebar from "./Sidebar";
+
 
 
 export default function Layout({ children }) {
+  const { user } = useCoin();
+
   const [search, setSearch] = useState('')
   useEffect(() => {
     document.body.style.overflowY = search ? 'hidden' : ''
@@ -35,7 +40,7 @@ export default function Layout({ children }) {
                 value={search} onChange={e => setSearch(e.target.value)} />
             </form>
           </div>
-          <AuthModal />
+          {user?<Sidebar/>:<AuthModal />}
         </div>
       </nav>
       {search && (
