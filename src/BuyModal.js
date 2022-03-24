@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AuthModal() {
+export default function BuyModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const { setAlert } = useCoin();
@@ -75,7 +75,7 @@ export default function AuthModal() {
       <Button
         variant="contained"
         style={{
-          width: 95,
+          width: 105,
           height: 40,
           backgroundColor: "#fff",
           color: '#0d6efd',
