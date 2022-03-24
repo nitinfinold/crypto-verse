@@ -1,4 +1,5 @@
 import React from 'react'
+import BuyModal from "./BuyModal";
 
 const Resources = () => {
     return (
@@ -18,7 +19,9 @@ const Resources = () => {
                         <br />
                         <div className="text-center">
                             <a href="Downloadables/Investment_and_Tax_Planning.pdf" download rel="noopener noreferrer" target="_blank">
-                                <button type="button" className="btn btn-primary">Buy Now</button>
+                                <button type="button" className="btn btn-primary" onClick={()=>{}}>Buy Now</button>
+                                <BuyModal />
+                                <i classname="fa fa-download"></i>
                             </a>
                         </div>
                     </div>
