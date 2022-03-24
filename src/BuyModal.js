@@ -6,11 +6,8 @@ import Fade from '@material-ui/core/Fade';
 import AppBar from '@material-ui/core/AppBar'
 import { useCoin } from "./Context";
 import { Tabs, Tab,Box, Button, TextField } from "@material-ui/core";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-
-
-import Signup from './Signup';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
