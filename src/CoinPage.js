@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ChartInfo from './ChartInfo';
+import { useCoin } from "./Context";
+import Button from '@material-ui/core/Button';
+import { db } from "./firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 
 
@@ -8,6 +12,8 @@ export default function CoinPage() {
   const { id } = useParams();
 
   const [coin, setCoin] = useState();
+
+  const { user, setAlert, watchlist } = useCoin();
 
   const fetchCoin = async () => {
 
@@ -17,6 +23,54 @@ export default function CoinPage() {
     setCoin(data);
 
 
+  };
+
+  const inWatchlist = watchlist.includes(coin?.id);
+
+  const addToWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", user.uid);
+    try {
+      await setDoc(
+        coinRef,
+        { coins: watchlist ? [...watchlist, coin?.id] : [coin?.id] },
+        { merge: true }
+      );
+
+      setAlert({
+        open: true,
+        message: `${coin.name} Added to the watchlist !`,
+        type: "success",
+      });
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
+  };
+
+  const removeFromWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", user.uid);
+    try {
+      await setDoc(
+        coinRef,
+        { coins: watchlist.filter((watch) => watch !== coin?.id) },
+        { merge: true }
+      );
+
+      setAlert({
+        open: true,
+        message: `${coin.name} Removed from the Watchlist !`,
+        type: "success",
+      });
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
   };
 
   useEffect(() => {
@@ -45,6 +99,19 @@ export default function CoinPage() {
 
         <div className="col-12 col-md-8">
           <ChartInfo coin={coin} />
+          {user && (
+            <Button
+              variant="outlined"
+              style={{
+                width: "100%",
+                height: 40,
+                backgroundColor: inWatchlist ? "#ff0000" : "#EEBC1D",
+              }}
+              onClick={inWatchlist ? removeFromWatchlist : addToWatchlist}
+            >
+              {inWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+            </Button>
+          )}
         </div>
 
         <div className="col-12 col-md-4">

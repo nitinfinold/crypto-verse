@@ -10,11 +10,31 @@ import CoinsPage from './CoinsPage';
 import Resources from './Resources';
 import { Alert } from './Alert';
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth,db } from "./firebase";
+import { onSnapshot, doc } from "firebase/firestore";
 
 function App() {
   const [coinList, setCoinList] = useState([]);
   const [user, setUser] = useState(null);
+  const [watchlist, setWatchlist] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      const coinRef = doc(db, "watchlist", user?.uid);
+      var unsubscribe = onSnapshot(coinRef, (coin) => {
+        if (coin.exists()) {
+          console.log(coin.data().coins);
+          setWatchlist(coin.data().coins);
+        } else {
+          console.log("No Items in Watchlist");
+        }
+      });
+
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, [user]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -61,7 +81,7 @@ function App() {
     })()
   }, [])
   return (
-    <CoinContext.Provider value={{ list: coinList, news: coinNews, alert, setAlert,user }}>
+    <CoinContext.Provider value={{ list: coinList, news: coinNews, alert, setAlert,user,watchlist }}>
       <BrowserRouter basename="/crypto-verse">
         <Layout >
           <Switch>

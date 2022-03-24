@@ -4,7 +4,9 @@ import Drawer from '@material-ui/core/Drawer';
 import { Avatar, Button } from "@material-ui/core";
 import { useCoin } from "./Context";
 import { signOut } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth,db } from "./firebase";
+import { doc, setDoc } from "firebase/firestore";
+// import { AiFillDelete } from "react-icons/ai";
 
 const useStyles = makeStyles({
     container: {
@@ -65,7 +67,7 @@ const useStyles = makeStyles({
 
 export default function UserSidebar() {
 
-    const { user,setAlert } = useCoin();
+    const { user, setAlert, watchlist } = useCoin();
     const classes = useStyles();
     const [state, setState] = React.useState({
         top: false,
@@ -85,13 +87,36 @@ export default function UserSidebar() {
     const logOut = () => {
         signOut(auth);
         setAlert({
-          open: true,
-          type: "success",
-          message: "Logout Successfull!",
+            open: true,
+            type: "success",
+            message: "Logout Successfull!",
         });
-    
+
         toggleDrawer();
-      };
+    };
+
+    // const removeFromWatchlist = async (coin) => {
+    //     const coinRef = doc(db, "watchlist", user.uid);
+    //     try {
+    //         await setDoc(
+    //             coinRef,
+    //             { coins: watchlist.filter((watch) => watch !== coin?.id) },
+    //             { merge: true }
+    //         );
+
+    //         setAlert({
+    //             open: true,
+    //             message: `${coin.name} Removed from the Watchlist !`,
+    //             type: "success",
+    //         });
+    //     } catch (error) {
+    //         setAlert({
+    //             open: true,
+    //             message: error.message,
+    //             type: "error",
+    //         });
+    //     }
+    // };
 
 
     return (
@@ -129,11 +154,11 @@ export default function UserSidebar() {
                                 >
                                     {user.displayName || user.email}
                                 </span>
-                                {/* <div className={classes.watchlist}>
+                                <div className={classes.watchlist}>
                                     <span style={{ fontSize: 15, textShadow: "0 0 5px black" }}>
                                         Watchlist
                                     </span>
-                                    {coins.map((coin) => {
+                                    {/* {coins.map((coin) => {
                                         if (watchlist.includes(coin.id))
                                             return (
                                                 <div className={classes.coin}>
@@ -150,8 +175,8 @@ export default function UserSidebar() {
                                                 </div>
                                             );
                                         else return <></>;
-                                    })}
-                                </div> */}
+                                    })} */}
+                                </div>
                             </div>
                             <Button
                                 variant="contained"
