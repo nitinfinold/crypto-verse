@@ -23,6 +23,7 @@ export default function User() {
         history.replace('/')
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
 
