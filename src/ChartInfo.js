@@ -9,11 +9,43 @@ export default function ChartInfo({ coin }) {
   const [day, setDay] = useState(1);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
+  const update = async () => {
     const HistoricalChart = await fetch(`https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=cad&days=${day}`);
     const json = await HistoricalChart.json()
     setHistoricData(json.prices);
-  }, [coin, day]);
+  }
+
+  useEffect(update, [coin, day]);
+
+  console.log({ historicData })
+  const INTERVAL = 60
+  const [countDown, setCountDown] = useState(INTERVAL);
+  useEffect(() => {
+    if (day !== 1) return
+    const intervalId = setInterval(() => {
+      if (countDown <= 0) {
+        setCountDown(INTERVAL)
+
+        const max = Math.max(...historicData.map(d => d[1]))
+        const min = Math.min(...historicData.map(d => d[1]))
+        setHistoricData(historicData.map((d, idx) => {
+          d[1] = (idx === 0) ? max : min;
+          return d
+        }))
+        setTimeout(() => {
+          update()
+        }, 100);
+      }
+      else {
+        setCountDown(countDown - 1)
+      }
+    }, 1000)
+
+    return () => {
+      clearInterval(intervalId)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [countDown, day, ]);
 
 
   return (historicData == null) ? (
@@ -51,6 +83,7 @@ export default function ChartInfo({ coin }) {
         <button type="button" className="btn btn-primary m-3" onClick={() => setDay(7)}>1 Week</button>
         <button type="button" className="btn btn-primary m-3" onClick={() => setDay(30)}>1 Month</button>
         <button type="button" className="btn btn-primary m-3" onClick={() => setDay(365)}>1 Year</button>
+        {(day === 1) && <span>Will update in {countDown} seconds</span>}
       </div>
     </div>
   )
