@@ -37,14 +37,16 @@ const Resources = () => {
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
-              {/* <img src="Downloadables/wireframe.png" alt="First File" className="align-center img-thumbnail img-fluid rounded "></img> */}
-
+              <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
             </div>
             <br />
             <div className="text-center">
-              <a href="Downloadables/Investment_and_Tax_Planning.pdf" download rel="noopener noreferrer" target="_blank">
-                <button type="button" className="btn btn-primary">Buy Now</button>
-              </a>
+              {(user != null) ? (
+                <BuyModal />
+              ) : (
+                <AuthModal />
+              )}
+              <i className="fa fa-download"></i>
             </div>
           </div>
 
@@ -52,14 +54,16 @@ const Resources = () => {
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
-              {/* <img src="Downloadables/wireframe.png" alt="First File" className="align-center img-thumbnail img-fluid rounded "></img> */}
-
+              <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
             </div>
             <br />
             <div className="text-center">
-              <a href="Downloadables/Investment_and_Tax_Planning.pdf" download rel="noopener noreferrer" target="_blank">
-                <button type="button" className="btn btn-primary">Buy Now</button>
-              </a>
+              {(user != null) ? (
+                <BuyModal />
+              ) : (
+                <AuthModal />
+              )}
+              <i className="fa fa-download"></i>
             </div>
           </div>
 
@@ -67,17 +71,20 @@ const Resources = () => {
         <br />
         <div className="row align-items-center">
 
-          <div className="col align-center">
+        <div className="col align-center">
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
-              {/* <img src="Downloadables/wireframe.png" alt="First File" className="align-center img-thumbnail img-fluid rounded "></img> */}
+              <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
             </div>
             <br />
             <div className="text-center">
-              <a href="Downloadables/Investment_and_Tax_Planning.pdf" download rel="noopener noreferrer" target="_blank">
-                <button type="button" className="btn btn-primary">Buy Now</button>
-              </a>
+              {(user != null) ? (
+                <BuyModal />
+              ) : (
+                <AuthModal />
+              )}
+              <i className="fa fa-download"></i>
             </div>
           </div>
 
@@ -85,14 +92,16 @@ const Resources = () => {
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
-              {/* <img src="Downloadables/wireframe.png" alt="First File" className="align-center img-thumbnail img-fluid rounded "></img> */}
-
+              <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
             </div>
             <br />
             <div className="text-center">
-              <a href="Downloadables/Investment_and_Tax_Planning.pdf" download rel="noopener noreferrer" target="_blank">
-                <button type="button" className="btn btn-primary">Buy Now</button>
-              </a>
+              {(user != null) ? (
+                <BuyModal />
+              ) : (
+                <AuthModal />
+              )}
+              <i className="fa fa-download"></i>
             </div>
           </div>
 
@@ -100,14 +109,16 @@ const Resources = () => {
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
-              {/* <img src="Downloadables/wireframe.png" alt="First File" className="align-center img-thumbnail img-fluid rounded "></img> */}
-
+              <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
             </div>
             <br />
             <div className="text-center">
-              <a href="Downloadables/Investment_and_Tax_Planning.pdf" download rel="noopener noreferrer" target="_blank">
-                <button type="button" className="btn btn-primary">Buy Now</button>
-              </a>
+              {(user != null) ? (
+                <BuyModal />
+              ) : (
+                <AuthModal />
+              )}
+              <i className="fa fa-download"></i>
             </div>
           </div>
 

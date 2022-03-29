@@ -5,8 +5,9 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import AppBar from '@material-ui/core/AppBar'
 import { useCoin } from "./Context";
-import { Tabs, Tab,Box, Button, TextField } from "@material-ui/core";
+import { Tabs, Tab, Box, Button, TextField, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
 import { useState } from 'react';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,9 +38,11 @@ export default function BuyModal() {
   const [open, setOpen] = React.useState(false);
   const { setAlert } = useCoin();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [cardnumber, setCardnumber] = useState("");
+  const [cardExpiry, setcardExpiry] = useState("");
+  const [cvv, setcvv] = useState("");
 
 
   const handleOpen = () => {
@@ -51,14 +54,48 @@ export default function BuyModal() {
   };
 
   const handleSubmit = async () => {
-    if (password !== confirmPassword) {
+    if(firstName==="" && lastName==="" && cardnumber==="" && cardExpiry==="" && cvv==="" && email===""){
       setAlert({
         open: true,
-        message: "Passwords do not match",
+        message: "All fields must be filled!!",
         type: "error",
       });
-      return;
+      return
     }
+    if(cardnumber.length !== 16 || isNaN(Number(cardnumber))
+    ){
+      setAlert({
+        open: true,
+        message: "Please enter a valid card number.",
+        type: "error",
+      });
+      return
+    }
+    if(isNaN(Number(cardExpiry))
+    ){
+      setAlert({
+        open: true,
+        message: "Please enter a valid expiry!!",
+        type: "error",
+      });
+      return
+    }
+    if(cvv.length !== 3 || isNaN(Number(cvv))
+    ){
+      setAlert({
+        open: true,
+        message: "CVV should be 3 digit number.",
+        type: "error",
+      });
+      return
+    }
+
+    setAlert({
+      open: true,
+      message: "Thank you for placing an Order!! We will mail you the additional information via your registered E-mail.",
+      type: "success",
+    });
+    setOpen(false)
   };
 
   const [value, setValue] = React.useState(0);
@@ -108,26 +145,59 @@ export default function BuyModal() {
             >
               <TextField
                 variant="outlined"
+                type="text"
+                label="Enter First Name"
+                value={firstName}
+                onChange={(e) => setfirstName(e.target.value)}
+                fullWidth
+              />
+              <TextField
+                variant="outlined"
+                type="text"
+                label="Enter Last Name"
+                value={lastName}
+                onChange={(e) => setlastName(e.target.value)}
+                fullWidth
+              />
+              <TextField
+                variant="outlined"
                 type="email"
                 label="Enter Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 fullWidth
               />
+              <RadioGroup
+                row
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="debit"
+                name="radio"
+              >
+                <FormControlLabel value="debit" control={<Radio />} label="Debit" />
+                <FormControlLabel value="credit" control={<Radio />} label="Credit" />
+              </RadioGroup>
               <TextField
                 variant="outlined"
-                label="Enter Password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="text"
+                label="Enter Card Number"
+                value={cardnumber}
+                onChange={(e) => setCardnumber(e.target.value)}
                 fullWidth
               />
               <TextField
                 variant="outlined"
-                label="Confirm Password"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                type="text"
+                label="Enter Card Expiry"
+                value={cardExpiry}
+                onChange={(e) => setcardExpiry(e.target.value)}
+                fullWidth
+              />
+              <TextField
+                variant="outlined"
+                type="text"
+                label="Enter Card CVV"
+                value={cvv}
+                onChange={(e) => setcvv(e.target.value)}
                 fullWidth
               />
               <Button
@@ -136,7 +206,7 @@ export default function BuyModal() {
                 style={{ backgroundColor: "#0d6efd" }}
                 onClick={handleSubmit}
               >
-                Sign Up
+                Confirm Order
               </Button>
 
             </Box>
