@@ -12,6 +12,7 @@ import { Alert } from './Alert';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth,db } from "./firebase";
 import { onSnapshot, doc } from "firebase/firestore";
+import User from './User';
 
 function App() {
   const [coinList, setCoinList] = useState([]);
@@ -88,6 +89,7 @@ function App() {
             <Route path="/coins/:id" component={CoinPage} exact />
             <Route path="/coins" component={CoinsPage} exact />
             <Route path="/resources" component={Resources} exact />
+            <Route path="/user" component={User} exact />
             <Route path="/" component={LandingPage} exact />
           </Switch>
           <Alert />

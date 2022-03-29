@@ -34,13 +34,18 @@ export default function Layout({ children }) {
               <li className="nav-item">
                 <NavLink className="nav-link" activeClassName='active' to='/resources' exact>Resources</NavLink>
               </li>
+              {user && (
+                <li className="nav-item">
+                  <NavLink className="nav-link" activeClassName='active' to='/user' exact>User Info</NavLink>
+                </li>
+              )}
             </ul>
             <form className="d-flex">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                 value={search} onChange={e => setSearch(e.target.value)} />
             </form>
           </div>
-          {user?<Sidebar/>:<AuthModal />}
+          {user ? <Sidebar /> : <AuthModal />}
         </div>
       </nav>
       {search && (

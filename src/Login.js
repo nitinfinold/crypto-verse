@@ -24,7 +24,7 @@ const handleSubmit = async () => {
     const result = await signInWithEmailAndPassword(auth, email, password);
     setAlert({
       open: true,
-      message: `Sign Up Successful. Welcome ${result.user.email}`,
+      message: `Sign In Successful. Welcome ${result.user.email}`,
       type: "success",
     });
 
