@@ -58,7 +58,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#EEBC1D",
+    backgroundColor: "#0D6EFD",
     boxShadow: "0 0 3px black",
   },
 });
