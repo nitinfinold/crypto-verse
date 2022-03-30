@@ -7,7 +7,8 @@ import AppBar from '@material-ui/core/AppBar'
 import { useCoin } from "./Context";
 import { Tabs, Tab, Box, Button, TextField, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
 import { useState } from 'react';
-
+import { db } from "./firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BuyModal() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const { setAlert } = useCoin();
+  const { user, setAlert } = useCoin();
   const [email, setEmail] = useState("");
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -90,12 +91,37 @@ export default function BuyModal() {
       return
     }
 
-    setAlert({
-      open: true,
-      message: "Thank you for placing an Order!! We will mail you the additional information via your registered E-mail.",
-      type: "success",
-    });
+    // setAlert({
+    //   open: true,
+    //   message: "Thank you for placing an Order!! We will mail you the additional information via your registered E-mail.",
+    //   type: "success",
+    // });
+    
+    addToOrders();
     setOpen(false)
+  };
+
+  const addToOrders = async () => {
+    const orderRef = doc(db, "Orders", user.uid);
+    try {
+      await setDoc(
+        orderRef,
+        { firstName: firstName,  lastName: lastName,  cardnumber: cardnumber,  cardExpiry: cardExpiry,  cvv: cvv,  email: email, },
+        { merge: true }
+      );
+
+      setAlert({
+        open: true,
+        message: "Thank you for placing an Order!! We will mail you the additional information via your registered E-mail.",
+        type: "success",
+      });
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
   };
 
   const [value, setValue] = React.useState(0);
