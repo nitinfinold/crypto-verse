@@ -27,9 +27,11 @@ export default function LandingPage() {
     return (
       <div key={group.map(item => item.id).join('-')} className={(idx === 0) ? "carousel-item active" : "carousel-item"} data-bs-interval="5000">
         <div className="coin-group">
-          {group.map(({ id, image }) => (
+          {group.map(({ name, current_price, id, image }) => (
             <Link key={id} to={`/coins/${id}`} className="nav-link" >
               <img src={image} className="d-block" alt="coin" />
+              <div className="h5">{name}</div>
+              <div>${current_price}</div>
             </Link>))}
         </div>
       </div>
@@ -38,20 +40,22 @@ export default function LandingPage() {
 
   const newsCards = news.map(news => {
     return (
-      <div className="card" key={news.link}>
-        <div className="row g-0">
-          <div className="col-md-3">
-            <img src={news.image_url ?? "news-fallback.jpeg"} className="img-fluid rounded-start" alt={news.title} />
-          </div>
-          <div className="col-md-9">
-            <div className="card-body">
-              <h5 className="card-title">{news.title}</h5>
-              <p className="card-text">{news.description}</p>
-              <p className="card-text"><small className="text-muted">{news.pubDate}</small></p>
+      <a key={news.link} href={news.link} target="_blank" rel="noreferrer" style={{textDecoration: 'none'}}>
+        <div className="card">
+          <div className="row g-0">
+            <div className="col-md-3">
+              <img src={news.image_url ?? "news-fallback.jpeg"} className="img-fluid rounded-start" alt={news.title} />
+            </div>
+            <div className="col-md-9">
+              <div className="card-body">
+                <h5 className="card-title">{news.title}</h5>
+                <p className="card-text">{news.description}</p>
+                <p className="card-text"><small className="text-muted">{news.pubDate}</small></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
     )
   })
 

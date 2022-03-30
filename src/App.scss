@@ -20,16 +20,19 @@
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-    height: 140px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    text-align: center;
 
     img {
       width: auto;
       height: 80px;
       object-fit: contain;
       object-position: center;
+      width: 100%;
+      margin-bottom: 1rem;
     }
 
     @media (max-width: 575px) {}
