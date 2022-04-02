@@ -25,7 +25,8 @@ const useStyles = makeStyles({
     height: "92%",
   },
   logout: {
-    height: "10%",
+    // height: "10%",
+    color: "#fff",
     width: "100%",
     backgroundColor: "#0d6efd",
     marginTop: 20,
@@ -40,7 +41,7 @@ const useStyles = makeStyles({
   watchlist: {
     flex: 1,
     width: "100%",
-    backgroundColor: "grey",
+    backgroundColor: "#fafafa",
     borderRadius: 10,
     padding: 15,
     paddingTop: 10,
@@ -48,7 +49,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     gap: 12,
-    overflowY: "scroll",
+    overflowY: "auto",
   },
   coin: {
     padding: 10,
@@ -58,7 +59,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#0D6EFD",
+    // backgroundColor: "#0D6EFD",
     boxShadow: "0 0 3px black",
   },
 });
@@ -153,8 +154,8 @@ export default function UserSidebar() {
                 >
                   {user.displayName || user.email}
                 </span>
-                <div className={classes.watchlist}>
-                  <span style={{ fontSize: 15, textShadow: "0 0 5px black" }}>
+                <div className={classes.watchlist + " card"}>
+                  <span style={{ fontSize: 15, fontWeight:700}}>
                     watchlist
                   </span>
                   {list?.map((coin) => {

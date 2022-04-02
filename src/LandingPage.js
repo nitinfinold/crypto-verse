@@ -40,7 +40,7 @@ export default function LandingPage() {
 
   const newsCards = news.map(news => {
     return (
-      <a key={news.link} href={news.link} target="_blank" rel="noreferrer" style={{textDecoration: 'none'}}>
+      <a key={news.link} href={news.link} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
         <div className="card">
           <div className="row g-0">
             <div className="col-md-3">
@@ -61,26 +61,29 @@ export default function LandingPage() {
 
   return (
     <>
-      <div className="container-xxl">
-        <p className="text-center fs-2 pt-5 pb-4">Trending</p>
-      </div>
-      <div className="container-xxl pb-5">
-        <div id="carouselExampleControls" key={itemNumber} className="carousel carousel-dark slide" data-bs-ride="carousel">
-          <div className="carousel-inner">
-            {carouselItems}
-          </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
+      <div className="trending">
+        <div className="container-xxl">
+          <p className="text-center fs-2 pt-5 pb-4">Trending</p>
         </div>
+        <div className="container-xxl pb-5">
+          <div id="carouselExampleControls" key={itemNumber} className="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div className="carousel-inner">
+              {carouselItems}
+            </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+
       </div>
       <div className="news">
-        <div className="container-xxl pt-4 pb-5">
+        <div className="container-xxl pt-4">
           <p className="text-center fs-2 pt-4 pb-5">News</p>
           {newsCards}
         </div>

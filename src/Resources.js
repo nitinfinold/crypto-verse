@@ -7,7 +7,7 @@ const Resources = () => {
 
   const { user } = useCoin();
 
-  console.log({user})
+  console.log({ user })
   return (
     <div>
       <div className="container-xxl">
@@ -16,7 +16,7 @@ const Resources = () => {
 
       <div className="container">
         <div className="row align-items-start">
-          <div className="col align-center">
+          <div className="col-12 col-md-4 align-center">
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
@@ -27,13 +27,13 @@ const Resources = () => {
               {(user != null) ? (
                 <BuyModal />
               ) : (
-                <AuthModal />
+                <AuthModal text="login to buy" />
               )}
               <i className="fa fa-download"></i>
             </div>
           </div>
 
-          <div className="col align-center">
+          <div className="col-12 col-md-4 align-center">
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
@@ -44,13 +44,13 @@ const Resources = () => {
               {(user != null) ? (
                 <BuyModal />
               ) : (
-                <AuthModal />
+                <AuthModal text="login to buy" />
               )}
               <i className="fa fa-download"></i>
             </div>
           </div>
 
-          <div className="col align-center">
+          <div className="col-12 col-md-4 align-center">
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
@@ -61,7 +61,7 @@ const Resources = () => {
               {(user != null) ? (
                 <BuyModal />
               ) : (
-                <AuthModal />
+                <AuthModal text="login to buy" />
               )}
               <i className="fa fa-download"></i>
             </div>
@@ -71,7 +71,7 @@ const Resources = () => {
         <br />
         <div className="row align-items-center">
 
-        <div className="col align-center">
+          <div className="col-12 col-md-4 align-center">
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
@@ -82,13 +82,13 @@ const Resources = () => {
               {(user != null) ? (
                 <BuyModal />
               ) : (
-                <AuthModal />
+                <AuthModal text="login to buy" />
               )}
               <i className="fa fa-download"></i>
             </div>
           </div>
 
-          <div className="col align-center">
+          <div className="col-12 col-md-4 align-center">
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
@@ -99,13 +99,13 @@ const Resources = () => {
               {(user != null) ? (
                 <BuyModal />
               ) : (
-                <AuthModal />
+                <AuthModal text="login to buy" />
               )}
               <i className="fa fa-download"></i>
             </div>
           </div>
 
-          <div className="col align-center">
+          <div className="col-12 col-md-4 align-center">
             <p className="text-center fs-5">Investment and Tax Planning</p>
             <br />
             <div className="text-center">
@@ -116,7 +116,7 @@ const Resources = () => {
               {(user != null) ? (
                 <BuyModal />
               ) : (
-                <AuthModal />
+                <AuthModal text="login to buy" />
               )}
               <i className="fa fa-download"></i>
             </div>

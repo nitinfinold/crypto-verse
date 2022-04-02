@@ -30,11 +30,11 @@ export default function User() {
   console.log({ user, history })
 
   return (
-    <div className="container-xxl">
+    <div className="container-xxl" style={{padding: "0 20px"}}>
       <p className="fs-1 pt-5 pb-2">User Info</p>
       <form>
         Email:<br /> {email}<br /><br />
-        Name: <input className="form-control" value={name} onChange={(e) => setName(e.target.value)} /><br />
+        Name: <input className="form-control" style={{maxWidth: "500px"}} value={name} onChange={(e) => setName(e.target.value)} /><br />
         <button className="btn btn-primary" onClick={() => {
           history.push(history.location.pathname)
           updateProfile(user.auth.currentUser, {

@@ -69,7 +69,7 @@ const handleSubmit = async () => {
         variant="contained"
         size="large"
         onClick={handleSubmit}
-        style={{ backgroundColor: "#0d6efd" }}
+        style={{ backgroundColor: "#0d6efd", color:"#fff"}}
       >
         Login
       </Button>

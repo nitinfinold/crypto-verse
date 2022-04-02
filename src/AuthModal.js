@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AuthModal() {
+export default function AuthModal({text}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const { setAlert } = useCoin();
@@ -87,12 +87,12 @@ export default function AuthModal() {
       <Button 
         variant="contained"
         style={{
-            width: 85,
+            minWidth: 85,
             height: 40,
             backgroundColor: "#fff",
             color: '#0d6efd',
         }}
-        onClick={handleOpen}>Login</Button>
+        onClick={handleOpen}>{text ?? "Login"}</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

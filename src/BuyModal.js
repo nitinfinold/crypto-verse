@@ -229,7 +229,7 @@ export default function BuyModal() {
               <Button
                 variant="contained"
                 size="large"
-                style={{ backgroundColor: "#0d6efd" }}
+                style={{ backgroundColor: "#0d6efd", color:"#fff"  }}
                 onClick={handleSubmit}
               >
                 Confirm Order

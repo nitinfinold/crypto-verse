@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useCoin } from "./Context";
 
-export function CoinList({search, title, zIndex, linkCallback}) {
+export function CoinList({search, title, zIndex, position, linkCallback}) {
   const coinList = useCoin().list
 
   return (
-    <div className="search-result" style={{ zIndex }}>
+    <div className="search-result" style={{ zIndex, position }}>
       <div className="container-xxl">
         <p className="fs-1 pt-5 pb-2">{title}</p>
         <table className="table">
@@ -13,7 +13,7 @@ export function CoinList({search, title, zIndex, linkCallback}) {
             <tr>
               <th scope="col">#</th>
               <th scope="col" style={{ paddingLeft: '1.5rem' }}>Coin</th>
-              <th scope="col">Price</th>
+              <th scope="col">Price (CAD)</th>
               <th scope="col">Market Cap</th>
             </tr>
           </thead>
@@ -27,7 +27,7 @@ export function CoinList({search, title, zIndex, linkCallback}) {
                       {coin.name}
                     </Link>
                   </td>
-                  <td>{coin.current_price}</td>
+                  <td>${coin.current_price}</td>
                   <td>{coin.market_cap}</td>
                 </tr>
               ))

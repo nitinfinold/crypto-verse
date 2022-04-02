@@ -26,9 +26,6 @@ export default function Layout({ children }) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName='active' to='/' exact>Home</NavLink>
-              </li>
-              <li className="nav-item">
                 <NavLink className="nav-link" activeClassName='active' to='/coins' exact>All Coins</NavLink>
               </li>
               <li className="nav-item">
@@ -49,39 +46,32 @@ export default function Layout({ children }) {
         </div>
       </nav>
       {search && (
-        <CoinList search={search} title="Search Result" zIndex={2} linkCallback={() => setSearch('')} />
+        <CoinList search={search} title="Search Result" zIndex={2} position="fixed" linkCallback={() => setSearch('')} />
       )}
-      {children}
+      <div className="page-content pb-5">
+        {children}
+      </div>
       <div class="footer-dark">
         <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>Services</h3>
-                        {/* <ul>
-                            <li><a href="#">Web design</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Hosting</a></li>
-                        </ul> */}
-                    </div>
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>About</h3>
-                        {/* <ul>
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Careers</a></li>
-                        </ul> */}
-                    </div>
-                    <div class="col-md-6 item text">
-                        <h3>Company Name</h3>
-                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
-                    </div>
-                    {/* <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div> */}
-                </div>
-                <p class="copyright">Company Name © 2018</p>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5 item">
+                <h3>Resources</h3>
+                <ul>
+                  <li>Github: <a href="https://github.com/nitinfinold/crypto-verse">https://github.com/nitinfinold/crypto-verse</a></li>
+                  <li>Trello: <a href="https://trello.com/b/tAHRD3eX/icognito-winter-2022-capstone">https://trello.com/b/tAHRD3eX/icognito-winter-2022-capstone</a></li>
+                </ul>
+              </div>
+              <div class="col-md-7 item text">
+                <h3>About</h3>
+                <p>This site is built to assist users in tracking trending coins, sorting coins, providing historical charts for coins, and adding favourite coins to watchlists.</p>
+              </div>
+              {/* <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div> */}
             </div>
+            <p class="copyright">Crypto-verse © 2022</p>
+          </div>
         </footer>
-    </div>
+      </div>
     </>
   )
 }
