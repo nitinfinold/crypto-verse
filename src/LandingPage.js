@@ -38,13 +38,13 @@ export default function LandingPage() {
     )
   })
 
-  const newsCards = news.map(news => {
+  const newsCards = news.map((news, idx) => {
     return (
       <a key={news.link} href={news.link} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
         <div className="card">
           <div className="row g-0">
             <div className="col-md-3">
-              <img src={news.image_url ?? "news-fallback.jpeg"} className="img-fluid rounded-start" alt={news.title} />
+              <img src={news.image_url ?? `images/news-fallback${idx}.jpeg`} className="img-fluid rounded-start" alt={news.title} />
             </div>
             <div className="col-md-9">
               <div className="card-body">

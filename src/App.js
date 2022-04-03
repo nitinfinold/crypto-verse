@@ -71,7 +71,7 @@ function App() {
       let res
       let json
       try {
-        res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_55013c491e07acd3c5766ae3afc3603800d5&q=crypto&language=en&domain=cision`)
+        res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_55013c491e07acd3c5766ae3afc3603800d5&q=crypto&language=en`)
         json = await res.json()
       }
       catch {
