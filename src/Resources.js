@@ -34,7 +34,7 @@ const Resources = () => {
           </div>
 
           <div className="col-12 col-md-4 align-center">
-            <p className="text-center fs-5">Investment and Tax Planning</p>
+            <p className="text-center fs-5">Candle Chart Pattern</p>
             <br />
             <div className="text-center">
               <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
@@ -51,7 +51,7 @@ const Resources = () => {
           </div>
 
           <div className="col-12 col-md-4 align-center">
-            <p className="text-center fs-5">Investment and Tax Planning</p>
+            <p className="text-center fs-5">Intraday Trading</p>
             <br />
             <div className="text-center">
               <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
@@ -72,7 +72,7 @@ const Resources = () => {
         <div className="row align-items-center">
 
           <div className="col-12 col-md-4 align-center">
-            <p className="text-center fs-5">Investment and Tax Planning</p>
+            <p className="text-center fs-5">Long-Term Investing</p>
             <br />
             <div className="text-center">
               <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
@@ -89,7 +89,7 @@ const Resources = () => {
           </div>
 
           <div className="col-12 col-md-4 align-center">
-            <p className="text-center fs-5">Investment and Tax Planning</p>
+            <p className="text-center fs-5">Swing Trading</p>
             <br />
             <div className="text-center">
               <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
@@ -106,7 +106,7 @@ const Resources = () => {
           </div>
 
           <div className="col-12 col-md-4 align-center">
-            <p className="text-center fs-5">Investment and Tax Planning</p>
+            <p className="text-center fs-5">How to make a level playing field</p>
             <br />
             <div className="text-center">
               <img src="Downloadables/first_product.jpg" alt="First File" className=" img-thumbnail img-fluid rounded "></img>
