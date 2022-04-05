@@ -12,6 +12,9 @@ const Resources = () => {
     <div>
       <div className="container-xxl">
         <p className="text-center fs-1 pt-5 pb-1"><strong>Resources</strong></p>
+        <p className='m-5 mt-1'>
+          Disclaimer: This website do-not sell any product. The payment gateway is purely for educational and demonstration purposes only. If you are a visitor to website. Please do-not proceed to pay. Owners of this website will not be liable for any kind of transaction."
+        </p>
       </div>
 
       <div className="container">
